@@ -1,1 +1,3 @@
-# update-zig.sh
+# update-zig
+
+Famous update-golang but for Zig language.
