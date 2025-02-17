@@ -10,5 +10,12 @@ os="$(uname -s | tr "[:upper:]" "[:lower:]")"
 
 base="https://ziglang.org/download"
 latest="$(wget -qO- "${base}/index.json" | grep -v -E '[0-9\.]+-dev' | grep -E -o '[0-9]\.[0-9]+(\.[0-9]+)?' | uniq | head -n 1)"
+archive="zig-${os}-${arch}-${latest}.tar.xz"
 
-wget -O "zig-${os}-${arch}-${latest}.tar.xz" "${base}/${latest}/zig-${os}-${arch}-${latest}.tar.xz"
+download() {
+	if ! wget -O "${archive}" "${base}/${latest}/zig-${os}-${arch}-${latest}.tar.xz"; then
+    	echo "Can not download archive" >&2
+    fi
+}
+
+download
