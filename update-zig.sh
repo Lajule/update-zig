@@ -14,8 +14,9 @@ archive="zig-${os}-${arch}-${latest}.tar.xz"
 
 download() {
 	if ! wget -O "${archive}" "${base}/${latest}/zig-${os}-${arch}-${latest}.tar.xz"; then
-    	echo "Can not download archive" >&2
-    fi
+		echo "Can not download archive" >&2
+	fi
 }
+
 
 download
