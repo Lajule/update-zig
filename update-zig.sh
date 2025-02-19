@@ -44,7 +44,7 @@ fi
 
 printf "\n"
 printf "HINT: Add zig to your PATH enviroment variable\n"
-printf "	export PATH=\${PATH}:%s\n" "${zig_dir}"
+printf "	export PATH=\${PATH}:%s\n" "${zig_dir}\n"
 printf "\n"
 
 exit 0
