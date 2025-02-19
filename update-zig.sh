@@ -6,7 +6,7 @@ set -o pipefail
 me="${0##*/}"
 version='0.1'
 
-if [[ "$1" == "-v" ]]; then
+if [[ "$1" == '-v' ]]; then
 	printf '%s: version: %s\n' "$me" "${version}"
 	exit 0
 fi
