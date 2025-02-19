@@ -11,7 +11,7 @@ if [[ "$1" == "-v" ]]; then
 	exit 0
 fi
 
-base_url="https://ziglang.org/download"
+base_url='https://ziglang.org/download'
 
 latest="$(wget -qO- "${base_url}/index.json" | grep -v -E '[0-9\.]+-dev' | grep -E -o '[0-9]\.[0-9]+(\.[0-9]+)?' | uniq | head -n 1)"
 if (( $? != 0 )); then
@@ -19,7 +19,7 @@ if (( $? != 0 )); then
 	exit 1
 fi
 
-install_dir="/usr/local"
+install_dir='/usr/local'
 archive="zig-$(uname -s | tr "[:upper:]" "[:lower:]")-$(uname -m)-${latest}.tar.xz"
 archive_path="${install_dir}/${archive}"
 archive_url="${base_url}/${latest}/${archive}"
@@ -42,9 +42,9 @@ if ! ln -s "${archive_path%.tar.xz}" "${zig_dir}"; then
 	exit 1
 fi
 
-printf "\n"
-printf "HINT: Add zig to your PATH enviroment variable\n"
-printf "	export PATH=\${PATH}:%s\n" "${zig_dir}\n"
-printf "\n"
+printf '\n'
+printf 'HINT: Add zig to your PATH enviroment variable\n'
+printf '	export PATH=${PATH}:%s\n' "${zig_dir}"
+printf '\n'
 
 exit 0
