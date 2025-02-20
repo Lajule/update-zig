@@ -42,6 +42,6 @@ if ! ln -s "${archive_path%.tar.xz}" "${zig_dir}"; then
 	exit 1
 fi
 
-printf '\nHINT: Add zig to your PATH enviroment variable\n	export PATH=${PATH}:%s\n\n' "${zig_dir}"
+printf '\nHINT: Add Zig to your PATH enviroment variable\n\texport PATH=${PATH}:%s\n\n' "${zig_dir}"
 
 exit 0

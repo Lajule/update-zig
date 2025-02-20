@@ -1,3 +1,5 @@
 # update-zig
 
-Famous update-golang but for Zig language.
+Famous [update-golang][1] but for Zig language.
+
+[1]: https://github.com/udhos/update-golang
