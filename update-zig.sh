@@ -3,8 +3,11 @@
 
 set -o pipefail
 
-me="${0##*/}"
 version='0.1'
+base_url='https://ziglang.org/download'
+install_dir='/usr/local'
+
+me="${0##*/}"
 
 if [[ "$1" == '-v' ]]; then
 	printf '%s: version: %s\n' "${me}" "${version}"
@@ -16,15 +19,12 @@ if ! hash wget; then
 	exit 1
 fi
 
-base_url='https://ziglang.org/download'
-
 latest="$(wget -qO- "${base_url}/index.json" | grep -v -E '[0-9\.]+-dev' | grep -E -o '[0-9]\.[0-9]+(\.[0-9]+)?' | uniq | head -n 1)"
 if (( $? != 0 )); then
 	printf '%s: could not find latest version\n' "${me}" >&2
 	exit 1
 fi
 
-install_dir='/usr/local'
 archive="zig-$(uname -s | tr "[:upper:]" "[:lower:]")-$(uname -m)-${latest}.tar.xz"
 archive_path="${install_dir}/${archive}"
 archive_url="${base_url}/${latest}/${archive}"
