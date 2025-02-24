@@ -11,6 +11,11 @@ if [[ "$1" == '-v' ]]; then
 	exit 0
 fi
 
+if ! hash wget; then
+	printf '%s: wget could not be found, please install it to use this script\n' "${me}" >&2
+	exit 1
+fi
+
 base_url='https://ziglang.org/download'
 
 latest="$(wget -qO- "${base_url}/index.json" | grep -v -E '[0-9\.]+-dev' | grep -E -o '[0-9]\.[0-9]+(\.[0-9]+)?' | uniq | head -n 1)"
