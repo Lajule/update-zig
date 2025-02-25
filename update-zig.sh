@@ -43,7 +43,7 @@ zig_dir="${install_dir}/zig"
 rm "${zig_dir}"
 
 if ! ln -s "${archive_path%.tar.xz}" "${zig_dir}"; then
-	printf '%s: could not relink zig directory: %s\n' "${me}" "${zig_dir}" >&2
+	printf '%s: could not link zig directory: %s\n' "${me}" "${zig_dir}" >&2
 	exit 1
 fi
 
