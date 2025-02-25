@@ -15,7 +15,7 @@ if [[ "$1" == '-v' ]]; then
 fi
 
 if ! hash wget; then
-	printf '%s: wget could not be found, please install it to use this script\n' "${me}" >&2
+	printf '%s: could not find wget, please install it to use this script\n' "${me}" >&2
 	exit 1
 fi
 
