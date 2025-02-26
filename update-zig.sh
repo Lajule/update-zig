@@ -19,7 +19,7 @@ if ! hash wget; then
 	exit 1
 fi
 
-latest="$(wget -qO- "${base_url}/index.json" | grep -v -E '[0-9\.]+-dev' | grep -E -o '[0-9]\.[0-9]+(\.[0-9]+)?' | uniq | head -n 1)"
+latest="$(wget -qO- "${base_url}/index.json" | grep -E -o '"[0-9]\.[0-9]+\.[0-9]+":' | grep -E -o '[0-9]\.[0-9]+\.[0-9]+' | head -1)"
 if (( $? != 0 )); then
 	printf '%s: could not find latest version\n' "${me}" >&2
 	exit 1
